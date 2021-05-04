@@ -81,9 +81,9 @@ def gradient_descent(X,Y, alpha, iterations):
     W1, b1, W2, b2 = init_params()
     for i in range(iterations):
         Z1,A1,Z2,A2 = forward_prop(W1, b1, W2, b2, X)
-        dW1, db1, dW2, db2 = backward_prop(Z1,A1,Z2,A2,W2,X,Y)
+        dW1, db1, dW2, db2 = back_prop(Z1,A1,Z2,A2,W2,X,Y)
         W1,b1,W2,b2 =update_params(W1,b1,W2, b2, dW1, db1, dW2, db2, alpha)
-        if (i % 50 == 0):
+        if i % 50 == 0:
             print("Iterations", i)
             predictions = get_predictions(A2)
             print("Accuracy:", get_accuracy(predictions(A2), Y))
@@ -107,6 +107,4 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
-
-    print(test_prediction(0, W1, b1, W2, b2))
-
+    print(plt.show())
